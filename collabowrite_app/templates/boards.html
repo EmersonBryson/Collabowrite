@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{this_board.board_title}}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/board.css' %}">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#draggable").draggable();
+        });
+    </script>
+</head>
+
+<body
+    style="background: linear-gradient(rgba(0, 0, 0, 0.25),rgba(0,0,0,0.25)), url(https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80); background-size:cover; min-height: 500px; background-attachment: fixed; background-position: center; background-repeat: no-repeat;">
+    <div class="header-fluid d-flex p-3 justify-content-between bg-dark">
+        <div>
+            <h3 class="text-light">CollaboWRITE</h3>
+        </div>
+        <div>
+            <a href="/logout"><button type="button" class="btn btn-outline-light mx-2">Logout</button></a>
+            <a href="/directory"><button type="button" class="btn btn-outline-light">Directory</button></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center my-2">
+            <h1 class="text-light">{{this_board.board_title}}</h1>
+        </div>
+        <div class="row justify-content-between">
+            <div class="col text-center m-2">
+                {% if user == this_board.user %}
+                <button type="button" class="btn btn-outline-light bg-dark text-light" data-toggle="modal"
+                    data-target="#newSectionModal">Create Section</button>
+                <button type="button" class="btn btn-outline-primary text-primary bg-dark">Add Contributors</button>
+                <a href="/board/{{this_board.id}}/delete_board"><button type="button"
+                        class="btn btn-outline-danger bg-dark text-danger">Delete Board</button></a>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        {% for section in sections %}
+        <div class="col d-flex flex-row mx-2">
+            <ul id="sec" class="section">
+                <div class="d-flex justify-content-around">
+                    {% if user == section.user %}
+                    <a href="/board/{{this_board.id}}/{{section.id}}/delete_section"
+                        class="text-danger text-underline">Delete
+                        Section</a>
+                    {% endif %}
+                    <a href="/board/{{this_board.id}}/{{section.id}}/display_create_post">
+                        + New Post
+                    </a>
+                </div>
+                <h5 class="text-dark text-uppercase my-1">{{section.section_title}}</h5>
+                <p class="text-dark">{{section.section_summary}}</p>
+                {% if post.section.id == sections.id %}
+                {% for post in section.posts.all %}
+                <div>
+                    <a href="/board/{{this_board.id}}/{{post.id}}/display_post">
+                        <li class="text-dark">{{post.post_title}}</li>
+                    </a>
+                    {% if user == post.user %}
+                    <a href="/board/{{this_board.id}}/{{post.id}}/delete_post" class="text-danger">
+                        <p>remove</p>
+                    </a>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                {% endif %}
+            </ul>
+            {% endfor %}
+        </div>
+    </div>
+    <!--Create Section Modal-->
+    <div class="modal fade" id="newSectionModal" tabindex="-1" role="dialog" aria-labelledby="newSectionModalTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-light">
+                    <h5 class="modal-title" id="registerModalTitle">Create a New Section</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="text-light">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/create_section" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="board" value="{{this_board.id}}">
+                        <div class="form-group row">
+                            <label for="section_title" class="col-sm-2 col-form-label">Section Title: </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="section_title">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="section_summary" class="col-sm-2 col-form-label">Summary: </label>
+                            <div class="col-sm-10">
+                                <textarea id="section_summary" name="section_summary" rows="4"></textarea>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-success">Create</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer bg-dark">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--jquery script tags-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

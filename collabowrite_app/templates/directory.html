@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directory</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body
+    style="background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0,0,0,0.5)), url(https://images.unsplash.com/photo-1532012197267-da84d127e765?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80); background-size:cover; min-height: 500px; background-attachment: fixed; background-position: center; background-repeat: no-repeat;">
+    <div class="header-fluid d-flex p-3 justify-content-between bg-dark">
+        <div>
+            <h3 class="text-light">CollaboWRITE</h3>
+        </div>
+        <div>
+            <a href="/logout"><button type="button" class="btn btn-outline-light mx-2">Logout</button></a>
+            <a href="/directory"><button type="button" class="btn btn-outline-light">Directory</button></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <h1 class="display-2 text-light">Directory</h1>
+        </div>
+    </div>
+    <section class="hero-section">
+        <div class="card-grid">
+            <a class="card" href="/topic/fantasy">
+                <div class="card__background"
+                    style="background-image: url(https://images.unsplash.com/photo-1518709268805-4e9042af9f23?ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8ZmFudGFzeXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)">
+                </div>
+                <div class="card__content">
+                    <p class="card__category">Fiction</p>
+                    <h3 class="card__heading">Fantasy</h3>
+                </div>
+            </a>
+            <a class="card" href="/topic/mystery&crime">
+                <div class="card__background"
+                    style="background-image: url(https://images.unsplash.com/photo-1498946187162-07b3c978b218?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8ZGV0ZWN0aXZlfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)">
+                </div>
+                <div class="card__content">
+                    <p class="card__category">Fiction</p>
+                    <h3 class="card__heading">Mystery & Crime</h3>
+                </div>
+            </a>
+            <a class="card" href="/topic/thriller">
+                <div class="card__background"
+                    style="background-image: url(https://images.unsplash.com/photo-1495709165577-351d14380bdd?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTd8fHRocmlsbGVyfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)">
+                </div>
+                <div class="card__content">
+                    <p class="card__category">Fiction</p>
+                    <h3 class="card__heading">Thriller</h3>
+                </div>
+            </a>
+            <a class="card" href="/topic/horror">
+                <div class="card__background"
+                    style="background-image: url(https://images.unsplash.com/photo-1511406361295-0a1ff814c0ce?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjF8fGhvcnJvcnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)">
+                </div>
+                <div class="card__content">
+                    <p class="card__category">Fiction</p>
+                    <h3 class="card__heading">Horror</h3>
+                </div>
+            </a>
+            <a class="card" href="/topic/sciencefiction">
+                <div class="card__background"
+                    style="background-image: url(https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTl8fHNwYWNlfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)">
+                </div>
+                <div class="card__content">
+                    <p class="card__category">Fiction</p>
+                    <h3 class="card__heading">Science Fiction</h3>
+                </div>
+            </a>
+            <a class="card" href="/topic/childrensliterature">
+                <div class="card__background"
+                    style="background-image: url(https://images.unsplash.com/photo-1573309463328-ec43614b3def?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NjZ8fGNoaWxkcmVuJTIwYm9va3xlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)">
+                </div>
+                <div class="card__content">
+                    <p class="card__category">Fiction</p>
+                    <h3 class="card__heading">Children's Literature</h3>
+                </div>
+            </a>
+            <a class="card" href="/topic/realism">
+                <div class="card__background"
+                    style="background-image: url(https://images.unsplash.com/photo-1616285897941-3d8fe99fbeb8?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mzd8fHJlYWxpc218ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)">
+                </div>
+                <div class="card__content">
+                    <p class="card__category">Fiction</p>
+                    <h3 class="card__heading">Realism</h3>
+                </div>
+            </a>
+            <a class="card" href="/topic/satire">
+                <div class="card__background"
+                    style="background-image: url(https://images.unsplash.com/photo-1615592602923-9fb437226763?ixid=MXwxMjA3fDB8MHxzZWFyY2h8N3x8Y29tZWR5fGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)">
+                </div>
+                <div class="card__content">
+                    <p class="card__category">Fiction</p>
+                    <h3 class="card__heading">Satire</h3>
+                </div>
+            </a>
+            <a class="card" href="/topic/historical">
+                <div class="card__background"
+                    style="background-image: url(https://images.unsplash.com/photo-1600547151285-075e218ada49?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MzV8fGhpc3Rvcnl8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)">
+                </div>
+                <div class="card__content">
+                    <p class="card__category">Fiction</p>
+                    <h3 class="card__heading">Historical</h3>
+                </div>
+            </a>
+            <a class="card" href="/topic/youngadult">
+                <div class="card__background"
+                    style="background-image: url(https://images.unsplash.com/photo-1557315360-6a350ab4eccd?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTF8fHlvdW5nJTIwYWR1bHR8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)">
+                </div>
+                <div class="card__content">
+                    <p class="card__category">Fiction</p>
+                    <h3 class="card__heading">Young Adult</h3>
+                </div>
+            </a>
+            <a class="card" href="/topic/biography&memoirs">
+                <div class="card__background"
+                    style="background-image: url(https://images.unsplash.com/photo-1582739010387-0b49ea2adaf6?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8YmlvZ3JhcGh5fGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)">
+                </div>
+                <div class="card__content">
+                    <p class="card__category">Nonfiction</p>
+                    <h3 class="card__heading">Biography & Memoirs</h3>
+                </div>
+            </a>
+            <a class="card" href="/topic/history">
+                <div class="card__background"
+                    style="background-image: url(https://images.unsplash.com/photo-1527922751658-fdc12370761e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTl8fGhpc3Rvcnl8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)">
+                </div>
+                <div class="card__content">
+                    <p class="card__category">Nonfiction</p>
+                    <h3 class="card__heading">History</h3>
+                </div>
+            </a>
+            <a class="card" href="/topic/travel">
+                <div class="card__background"
+                    style="background-image: url(https://images.unsplash.com/photo-1504150558240-0b4fd8946624?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80)">
+                </div>
+                <div class="card__content">
+                    <p class="card__category">Nonfiction</p>
+                    <h3 class="card__heading">Travel</h3>
+                </div>
+            </a>
+            <a class="card" href="/topic/academic&philosophy">
+                <div class="card__background"
+                    style="background-image: url(https://images.unsplash.com/photo-1593240637899-5fc06c754c2b?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8cGhpbG9zb3BoeXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)">
+                </div>
+                <div class="card__content">
+                    <p class="card__category">Nonfiction</p>
+                    <h3 class="card__heading">Academic & Philosophy</h3>
+                </div>
+            </a>
+            <a class="card" href="/topic/selfhelp&instruction">
+                <div class="card__background"
+                    style="background-image: url(https://images.unsplash.com/photo-1554844453-7ea2a562a6c8?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Nnx8cGhvdG9ncmFwaHl8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)">
+                </div>
+                <div class="card__content">
+                    <p class="card__category">Nonfiction</p>
+                    <h3 class="card__heading">Self-help & Instruction</h3>
+                </div>
+            </a>
+            <a class="card" href="/topic/humor&commentary">
+                <div class="card__background"
+                    style="background-image: url(https://images.unsplash.com/photo-1590602847861-f357a9332bbc?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8cG9kY2FzdHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)">
+                </div>
+                <div class="card__content">
+                    <p class="card__category">Nonfiction</p>
+                    <h3 class="card__heading">Humor & Commentary</h3>
+                </div>
+            </a>
+            <a class="card" href="/topic/templates">
+                <div class="card__background"
+                    style="background-image: url(https://images.unsplash.com/photo-1493119508027-2b584f234d6c?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8aHRtbHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)">
+                </div>
+                <div class="card__content">
+                    <p class="card__category">Misc</p>
+                    <h3 class="card__heading">Templates</h3>
+                </div>
+            </a>
+            <a class="card" href="/topic/help&questions">
+                <div class="card__background"
+                    style="background-image: url(https://images.unsplash.com/photo-1595452767427-0905ad9b036d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8cXVlc3Rpb258ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)">
+                </div>
+                <div class="card__content">
+                    <p class="card__category">Misc</p>
+                    <h3 class="card__heading">Help & Questions</h3>
+                </div>
+            </a>
+            <a class="card" href="/topic/general&offtopic">
+                <div class="card__background"
+                    style="background-image: url(https://images.unsplash.com/photo-1605990424064-f51875154cf8?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjZ8fGNoYXR8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)">
+                </div>
+                <div class="card__content">
+                    <p class="card__category">Misc</p>
+                    <h3 class="card__heading">General & Off-Topic</h3>
+                </div>
+                </li>
+                <a class="card" href="/topic/suggestions&bugs">
+                    <div class="card__background"
+                        style="background-image: url(https://images.unsplash.com/photo-1543511309-c666bcdec9dc?ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8c3VnZ2VzdGlvbnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)">
+                    </div>
+                    <div class="card__content">
+                        <p class="card__category">Misc</p>
+                        <h3 class="card__heading">Suggestions & Bugs</h3>
+                    </div>
+                </a>
+                <div>
+    </section>
+</body>
+
+</html>

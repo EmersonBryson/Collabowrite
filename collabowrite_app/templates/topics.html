@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{topic_data.display_name}}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body
+    style="background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0,0,0,0.5)), url(https://images.unsplash.com/photo-1432821596592-e2c18b78144f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80); background-size:cover; min-height: 500px; background-attachment: fixed; background-position: center; background-repeat: no-repeat;">
+    <div class="header-fluid d-flex p-3 justify-content-between bg-dark">
+        <div>
+            <h3 class="text-light">CollaboWRITE</h3>
+        </div>
+        <div>
+            <a href="/logout"><button type="button" class="btn btn-outline-light mx-2">Logout</button></a>
+            <a href="/directory"><button type="button" class="btn btn-outline-light">Directory</button></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <h1 class="display-2 text-light text-capitalize">{{topic_data.display_name}}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center my-5">
+            {% if messages %}
+            <div>
+                {% for message in messages %}
+                <h5 class="text-danger">{{message}}</h5>
+                {% endfor %}
+            </div>
+            {% endif %}
+            <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#newBoardModal">
+                <h5>New
+                    Board</h5>
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col m-3">
+            <h1 class="text-light">My Boards:</h1>
+            <section class="hero-section">
+                <div class="card-grid">
+                    {% for board in my_boards %}
+                    <a class="card" href="/board/{{board.id}}">
+                        <div class="card__background" style="background-image: url({{board.board_image}})">
+                        </div>
+                        <div class="card__content">
+                            <p class="card__category">{{topic_data.display_name}}</p>
+                            <p class="card__category">{{board.user.user_name}}</p>
+                            <h3 class="card__heading">{{board.board_title}}</h3>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col m-3">
+            <h1 class="text-light">All Boards in <span class="text-capitalize">{{topic_data.display_name}}:</span></h1>
+            <section class="hero-section">
+                <div class="card-grid">
+                    {% for board in all_boards %}
+                    <a class="card" href="/board/{{board.id}}">
+                        <div class="card__background" style="background-image: url({{board.board_image}})">
+                        </div>
+                        <div class="card__content">
+                            <p class="card__category">{{topic_data.display_name}}</p>
+                            <p class="card__category">{{board.user.user_name}}</p>
+                            <h3 class="card__heading">{{board.board_title}}</h3>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- Add Board Modal-->
+    <div class="modal fade" id="newBoardModal" tabindex="-1" role="dialog" aria-labelledby="newBoardModalTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-light">
+                    <h5 class="modal-title" id="registerModalTitle">Create a New Board</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="text-light">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/create_board" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" value="{{topic_data.original_name}}" name="board_topic">
+                        <div class="form-group row">
+                            <label for="board_title" class="col-sm-2 col-form-label">Board Title: </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="board_title">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="board_tags" class="col-sm-2 col-form-label">Tags: </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="board_tags">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="board_image" class="col-sm-2 col-form-label">Image URL: </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="board_image">
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-success">Create</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer bg-dark">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
